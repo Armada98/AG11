@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AG11 Esport, fondée par Robz et Gumgumm : une structure Fortnite avec un roster Build.">
+<meta name="theme-color" content="#FBF7FA">
+<meta property="og:title" content="La structure · AG11 Esport">
+<meta property="og:description" content="AG11 Esport, fondée par Robz et Gumgumm : une structure Fortnite avec un roster Build.">
+<meta property="og:image" content="assets/logo-clair.png">
+<link rel="icon" type="image/png" href="assets/logo-clair.png">
+<title>La structure · AG11 Esport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/style-blanc.css">
+</head>
+<body>
+<header class="nav">
+ <div class="wrap">
+  <a class="brand" href="index.html" aria-label="AG11 Esport, accueil"><img src="assets/logo-clair.png" alt="" width="46" height="30"><span>ESPORT</span></a>
+  <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+  <nav class="navlinks" id="navlinks" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="structure.html" aria-current="page">La structure</a><a href="rosters.html">Roster</a><a href="maillot.html">Maillot</a><a href="reseaux.html">Réseaux</a><a class="btn pk" href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Rejoindre le Discord</a></nav>
+ </div>
+</header>
+<main>
+<section class="phead">
+ <div class="wrap">
+  <p class="eyebrow">La structure</p>
+  <h1>Une team <em>Fortnite</em>,<br>un roster Build.</h1>
+  <p class="lede">AG11 Esport est une structure Fortnite avec un roster Build. Elle a été fondée par Robz et Gumgumm, qui la dirigent.</p>
+ </div>
+</section>
+<section class="sec tight">
+ <div class="wrap">
+  <ul class="facts">
+   <li><span>Jeu</span><b>Fortnite</b></li>
+   <li><span>Roster</span><b>Build</b></li>
+   <li><span>Fondateurs</span><b>Robz &amp; Gumgumm</b></li>
+   <li><span>Communauté</span><b>TikTok · Discord</b></li>
+  </ul>
+  <div class="founders">
+   <div class="founder"><div class="mono">R</div><div><h3>Robz</h3><p>Co-fondateur · CEO</p></div></div>
+   <div class="founder"><div class="mono">G</div><div><h3>Gumgumm</h3><p>Co-fondateur · CEO</p></div></div>
+  </div>
+  <div class="next"><span>Page suivante</span><a href="rosters.html">Les rosters →</a></div>
+ </div>
+</section>
+</main>
+<footer>
+ <div class="wrap">
+  <a href="index.html" aria-label="Accueil"><img src="assets/logo-clair.png" alt="AG11" width="53" height="34"></a>
+  <nav aria-label="Liens du pied de page"><a href="structure.html">La structure</a><a href="rosters.html">Roster</a><a href="maillot.html">Maillot</a><a href="https://www.tiktok.com/@ag11esport" target="_blank" rel="noopener">TikTok</a><a href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Discord</a></nav>
+  <p>© 2026 AG11 ESPORT</p>
+ </div>
+</footer>
+<script>
+(() => {
+  const b = document.getElementById('burger'), l = document.getElementById('navlinks');
+  b.addEventListener('click', () => { const o = l.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+})();
+</script>
+
+</body>
+</html>
