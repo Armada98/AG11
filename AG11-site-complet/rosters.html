@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Les joueurs officiels du roster Build et les joueurs de l'académie AG11 Esport.">
+<meta name="theme-color" content="#FBF7FA">
+<meta property="og:title" content="Roster · AG11 Esport">
+<meta property="og:description" content="Les joueurs officiels du roster Build et les joueurs de l'académie AG11 Esport.">
+<meta property="og:image" content="logo-clair.png">
+<link rel="icon" type="image/png" href="logo-clair.png">
+<title>Roster · AG11 Esport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style-blanc.css">
+</head>
+<body>
+<header class="nav">
+ <div class="wrap">
+  <a class="brand" href="index.html" aria-label="AG11 Esport, accueil"><img src="logo-clair.png" alt="" width="46" height="30"><span>ESPORT</span></a>
+  <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+  <nav class="navlinks" id="navlinks" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="structure.html">La structure</a><a href="rosters.html" aria-current="page">Roster</a><a href="maillot.html">Maillot</a><a href="reseaux.html">Réseaux</a><a class="btn pk" href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Rejoindre le Discord</a></nav>
+ </div>
+</header>
+<main>
+<section class="phead">
+ <div class="wrap">
+  <p class="eyebrow">Le roster</p>
+  <h1>Les joueurs <em>AG11</em></h1>
+  <p class="lede">Les joueurs officiels du roster Build, et les joueurs de l'académie AG11.</p>
+ </div>
+</section>
+<section class="sec tight">
+ <div class="wrap">
+  <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Roster Build</p><h2>Joueurs <em>officiels</em></h2></div>
+  <div class="players" id="players-officiels"></div>
+  <div class="sec-head" style="margin:90px 0 28px"><p class="eyebrow">Académie</p><h2>Joueurs <em>académie</em></h2></div>
+  <div class="players" id="players-academie"></div>
+  <div class="next"><span>Page suivante</span><a href="maillot.html">Le maillot →</a></div>
+ </div>
+</section>
+</main>
+<footer>
+ <div class="wrap">
+  <a href="index.html" aria-label="Accueil"><img src="logo-clair.png" alt="AG11" width="53" height="34"></a>
+  <nav aria-label="Liens du pied de page"><a href="structure.html">La structure</a><a href="rosters.html">Roster</a><a href="maillot.html">Maillot</a><a href="https://www.tiktok.com/@ag11esport" target="_blank" rel="noopener">TikTok</a><a href="https://www.twitch.tv/ag11esport" target="_blank" rel="noopener">Twitch</a><a href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Discord</a></nav>
+  <p>© 2026 AG11 ESPORT</p>
+ </div>
+</footer>
+<script>
+(() => {
+  const b = document.getElementById('burger'), l = document.getElementById('navlinks');
+  b.addEventListener('click', () => { const o = l.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+})();
+</script>
+<script>
+/* ====== JOUEURS ======
+   Pour ajouter un joueur, ajoute une ligne dans la bonne liste :
+   { pseudo: "Pseudo", photo: "pseudo.jpg" } */
+const OFFICIELS = [
+  { pseudo: "Kykrizy", photo: "kykrizy.jpg" },
+  { pseudo: "Teroxi",  photo: "teroxi.jpg" },
+  { pseudo: "Nolan",   photo: "nolan.jpg" }
+];
+const ACADEMIE = [
+  { pseudo: "Kivenfn", photo: "kivenfn.jpg" },
+  { pseudo: "Slayzyx", photo: "slayzyx.jpg" },
+  { pseudo: "Jmlnq",   photo: "jmlnq.jpg" },
+  { pseudo: "Madarax", photo: "madarax.jpg" },
+  { pseudo: "Mystic",  photo: "mystic.jpg" }
+];
+(() => {
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const card = (p, i, tag, role) => `<article class="player">${p.photo ? `<img class="av" src="${esc(p.photo)}" alt="Photo de ${esc(p.pseudo)}" loading="lazy">` : '<div class="ph"></div>'}<div class="info"><div class="num">AG11 · ${tag} · ${String(i+1).padStart(2,'0')}</div><h3>${esc(p.pseudo)}</h3><div class="role">${role}</div></div></article>`;
+  document.getElementById('players-officiels').innerHTML = OFFICIELS.map((p, i) => card(p, i, 'BUILD', 'Joueur officiel Build')).join('');
+  document.getElementById('players-academie').innerHTML = ACADEMIE.map((p, i) => card(p, i, 'ACADÉMIE', 'Joueur académie')).join('');
+})();
+</script>
+</body>
+</html>

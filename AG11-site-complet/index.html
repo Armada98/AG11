@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AG11 Esport : structure esport Fortnite avec un roster Build.">
+<meta name="theme-color" content="#FBF7FA">
+<meta property="og:title" content="AG11 Esport">
+<meta property="og:description" content="AG11 Esport : structure esport Fortnite avec un roster Build.">
+<meta property="og:image" content="logo-clair.png">
+<link rel="icon" type="image/png" href="logo-clair.png">
+<title>AG11 Esport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style-blanc.css">
+</head>
+<body>
+<header class="nav">
+ <div class="wrap">
+  <a class="brand" href="index.html" aria-label="AG11 Esport, accueil"><img src="logo-clair.png" alt="" width="46" height="30"><span>ESPORT</span></a>
+  <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+  <nav class="navlinks" id="navlinks" aria-label="Navigation principale"><a href="index.html" aria-current="page">Accueil</a><a href="structure.html">La structure</a><a href="rosters.html">Roster</a><a href="maillot.html">Maillot</a><a href="reseaux.html">Réseaux</a><a class="btn pk" href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Rejoindre le Discord</a></nav>
+ </div>
+</header>
+<main>
+<section class="hero">
+ <canvas id="petals" aria-hidden="true"></canvas>
+ <div class="wrap">
+  <div class="tag">Structure esport · Fortnite</div>
+  <img class="hero-logo" src="logo-clair.png" alt="Logo AG11" width="900" height="580">
+  <h1 class="wordmark"><i></i>AG11 ESPORT<i></i></h1>
+  <p class="lede" style="text-align:center">Une structure Fortnite, un roster Build, une seule team.</p>
+  <div class="ctas">
+   <a class="btn pk" href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Rejoindre le Discord</a>
+   <a class="btn" href="maillot.html">Voir le maillot</a>
+  </div>
+ </div>
+</section>
+<section class="sec">
+ <div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Explorer</p><h2>Tout sur <em>AG11</em></h2></div>
+  <div class="pages">
+   <a class="pagecard plain" href="structure.html" aria-label="La structure"><img src="carte-structure.jpg" alt="" loading="lazy"></a>
+   <a class="pagecard plain" href="rosters.html" aria-label="Roster"><img src="carte-roster.jpg" alt="" loading="lazy"></a>
+   <a class="pagecard" href="maillot.html"><img src="blanc-face.jpg" alt="" loading="lazy" style="object-position:50% 20%"><h3>Maillot</h3><p>Le maillot officiel.</p></a>
+   <a class="pagecard plain" href="reseaux.html" aria-label="Réseaux AG11-Esport"><img src="carte-reseaux.jpg" alt="" loading="lazy"></a>
+  </div>
+ </div>
+</section>
+</main>
+<footer>
+ <div class="wrap">
+  <a href="index.html" aria-label="Accueil"><img src="logo-clair.png" alt="AG11" width="53" height="34"></a>
+  <nav aria-label="Liens du pied de page"><a href="structure.html">La structure</a><a href="rosters.html">Roster</a><a href="maillot.html">Maillot</a><a href="https://www.tiktok.com/@ag11esport" target="_blank" rel="noopener">TikTok</a><a href="https://www.twitch.tv/ag11esport" target="_blank" rel="noopener">Twitch</a><a href="https://discord.gg/f52g9ddNd" target="_blank" rel="noopener">Discord</a></nav>
+  <p>© 2026 AG11 ESPORT</p>
+ </div>
+</footer>
+<script>
+(() => {
+  const b = document.getElementById('burger'), l = document.getElementById('navlinks');
+  b.addEventListener('click', () => { const o = l.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+})();
+</script>
+<script>
+(() => {
+  const cv = document.getElementById('petals'), cx = cv.getContext('2d');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0; const dpr = Math.min(2, devicePixelRatio || 1);
+  const P = Array.from({length: 46}, () => ({x: Math.random(), y: Math.random(), z: .3 + Math.random()*.9, r: Math.random()*6.3, s: (Math.random()-.5)*1.6, ph: Math.random()*6.3}));
+  const size = () => { const r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W*dpr; cv.height = H*dpr; cx.setTransform(dpr,0,0,dpr,0,0); };
+  new ResizeObserver(size).observe(cv); size();
+  function petal(x, y, s, r, a){
+    cx.save(); cx.translate(x, y); cx.rotate(r); cx.scale(s, s*(.55+.45*Math.abs(Math.sin(r*1.7))));
+    cx.fillStyle = `rgba(255,154,216,${a})`; cx.beginPath();
+    cx.moveTo(0,-10); cx.bezierCurveTo(9,-9,10,4,0,11); cx.bezierCurveTo(-10,4,-9,-9,0,-10); cx.fill(); cx.restore();
+  }
+  const t0 = performance.now();
+  function frame(now){
+    const t = (now - t0)/1000; cx.clearRect(0,0,W,H);
+    for (const p of P){
+      const y = ((p.y*H + t*40*p.z) % (H+40)) - 20;
+      const x = ((p.x*W + t*18*p.z + Math.sin(t*.9+p.ph)*30) % (W+40) + W+40) % (W+40) - 20;
+      petal(x, y, p.z*1.2, p.r + t*p.s, .18 + p.z*.4);
+    }
+    if (!still) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
